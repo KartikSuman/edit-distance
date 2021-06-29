@@ -1,0 +1,29 @@
+#include<iostream>
+using namespace std;
+
+int min(int x, int y, int z) { return min(min(x, y), z); }
+int ed(string s1, string s2, int m,int n)
+{
+    static int count=0;
+    count++;
+    cout<<"count is : "<<count<<"\n";
+    if(m==0)return n;
+    if(n==0)return m;
+  //  cout<<"h \n";
+    if(s1[m-1]==s2[n-1])
+        return ed(s1,s2,m-1,n-1);
+        //cout<<"i \n";
+    else
+        return 1+ min(ed(s1,s2,m,n-1),ed(s1,s2,m-1,n),ed(s1,s2,m-1,n-1));
+     //   cout<<"i \n";
+}
+
+int main()
+{
+string s1,s2;
+cin>>s1>>s2;
+  int res=  ed(s1,s2,s1.length(),s2.length());
+  cout<<res;
+  //cout<<"count is "<<count;
+  return 0;
+}
